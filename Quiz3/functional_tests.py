@@ -58,6 +58,28 @@ class NewVisitorTest(unittest.TestCase):
 	# here is the first test (for free) 
         self.browser.get('http://localhost:8000/index.html')
 
+        # test for page title on homepage
+        self.assertIn('Quiz 3 Test Web Site' ,self.browser.title)
+
+        #test for h1 heading on homepage
+        h=self.browser.find_element_by_tag_name('h1')
+
+        #testing for image
+        m=self.browser.find_element_by_tag_name('img')
+        self.assertIn('hola.jpg',m.get_attribute('src'))
+
+        #test for area to click that goes to "newpage.html"
+        a=self.browser.find_element_by_id('homepage')
+        a.click()
+
+        #test for the existence of "newpage.html"
+        self.assertIn('newpage.html',self.browser.title)
+
+        #test for a header on the new page
+        h=self.browser.find_element_by_tag_name('h1')
+
+        
+
 if __name__=="__main__":
         unittest.main(warnings="ignore")
 
